@@ -1,0 +1,96 @@
+sudo apt update && sudo apt upgrade
+
+sudo fuser -kv /var/cache/debconf/config.dat
+
+sudo apt --fix-broken install
+
+sudo dpkg --configure -a
+
+sudo apt install nginx certbot python3-certbot-nginx
+
+sudo ufw allow "Nginx Full"
+
+sudo ufw allow OpenSSH
+
+ufw enable
+apt install npm
+npm install -g pm2
+pm2 status
+cd /var/www
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+exec $SHELL
+nvm install --lts
+npx create-next-app@latest nkponani
+ls
+cd nkponani
+npm i
+npm run build
+cd /etc/nginx/
+ls
+cd /etc/nginx/sites-available
+
+server {
+        listen 80;
+        server_name www.nkponani.com nkponani.com;
+
+        gzip on;
+        gzip_proxied any;
+        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+        gzip_comp_level 5;
+        gzip_buffers 16 8k;
+        gzip_min_length 256;
+
+        location /.next/static/ {
+            alias /var/www/nkponani/.next/static;
+            expires 365d;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://127.0.0.1:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+}
+cd /etc/nginx
+
+sudo vi nginx.conf
+
+sudo systemctl restart nginx
+
+cd /etc/nginx/sites-available
+
+rm default
+
+cd ../
+
+cd /etc/nginx/sites-enabled
+
+rm default
+
+cd /var/www/
+
+cd nkponani
+
+pm2 start npm --name nkponani_v2 -- start
+
+sudo certbot --nginx -d nkponani.com
+
+pm2 stop all
+pm2 delete all
+
+pm2 show 0
+pm2 monit 0
+netstat -nlp | grep :3000
+
+sudo kill -9 2039
+
+************** pm2 *******************
+
+Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs nobus_v2.0 [--lines 1000]` to display logs
+ Use `pm2 env 0` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage nobus_v2.0
