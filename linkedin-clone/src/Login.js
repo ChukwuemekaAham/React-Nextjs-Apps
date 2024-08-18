@@ -9,7 +9,9 @@ function Login() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [profilePic, setprofilePic] = useState("");
+
   const dispatch = useDispatch();
+
   const loginToApp = (e) => {
     e.preventDefault();
 
