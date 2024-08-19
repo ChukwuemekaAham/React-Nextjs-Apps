@@ -1,0 +1,95 @@
+npm install -g firebase-tools
+
+deploy to Firebase Hosting
+You can deploy now or later. To deploy now, open a terminal window, then navigate to or create a root directory for your web app.
+
+Sign in to Google
+
+firebase login
+
+Initiate your project
+Run this command from your app's root directory:
+
+firebase init
+
+When you're ready, deploy your web app
+Put your static files (e.g., HTML, CSS, JS) in your app's deploy directory (the default is "public"). Then, run this command from your app's root directory:
+
+firebase deploy
+After deploying, view your app at notion-clone-598ce.web.app
+
+Need help? Check out the Hosting docs https://firebase.google.com/docs/hosting/quickstart?hl=en&authuser=0&_gl=1*c7v1iz*_ga*MTMyMTQwNjQ4LjE3MjExMzMyNzk.*_ga_CW55HF8NVT*MTcyMTEzMzI3OS4xLjEuMTcyMTEzNDU0OS42MC4wLjA.
+
+<!-- Clerk Schema -->
+
+{   
+    "email": "{{user.primary_email_address}}",
+    "image": "{{user.image_url}}",
+    "fullName": "{{user.full_name}}",
+    "lastName": "{{user.last_name}}",
+    "firstName": "{{user.first_name}}"
+   
+}
+
+<!-- package to install -->
+
+npm install firebase @grpc/grpc-js
+npm install --save react-firebase-hooks
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add breadcrumb
+npx shadcn-ui@latest add tooltip
+npx shadcn-ui@latest add avatar
+
+<!-- Yjs -->
+
+Yjs is a CRDT implementation that exposes its internal data structure as shared types. Shared types are common data types like Map or Array with superpowers: changes are automatically distributed to other peers and merged without merge conflicts.
+
+Yjs is network agnostic (p2p!), supports many existing rich text editors, offline editing, version snapshots, undo/redo and shared cursors. It scales well with an unlimited number of users and is well suited for even large documents.
+
+<!-- Time stamp to update -->
+1:27:00 - RoomId in Cloud Firestore (Data Bindings)
+2.05.46 - Add shadcn breadcrumb
+
+<!-- LiveBlocks Sign Up -->
+https://liveblocks.io/docs/get-started/yjs-blocknote-react
+
+npm install @liveblocks/client @liveblocks/react @liveblocks/yjs yjs @blocknote/core @blocknote/react @blocknote/mantine
+
+npx create-liveblocks-app@latest --init --framework react
+
+<!-- CloudFlare workers -->
+Worker Models
+
+<!-- Create a new application with C3
+C3 (create-cloudflare-cli) is a command-line tool designed to help you set up and deploy Workers & Pages applications to Cloudflare as fast as possible. To get started, open a terminal window and run: -->
+npm create cloudflare
+
+wrangler login
+<!-- To start a local server for developing your Worker, run: -->
+https://developers.cloudflare.com/workers/configuration/environment-variables/
+
+npx wrangler dev
+
+npm run dev
+
+<!-- To start a local server for developing your Pages application, run -->
+npx wrangler pages dev
+
+<!-- To deploy a Worker, run: -->
+
+npx wrangler deploy
+
+npm run deploy
+
+<!-- Hono web application framework (Just like express) -->
+npm i hono
+
+<!-- OpenAI or Gemini -->
+npm i openai
+npm i @google/generative-ai
+
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
